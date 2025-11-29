@@ -1,0 +1,539 @@
+/* ====================================
+   DESIGN SYSTEM - RAULPERFUMES
+   ==================================== */
+
+:root {
+    /* Color Palette - Dark & Luxurious */
+    --color-bg-primary: #0a0a0a;
+    --color-bg-secondary: #141414;
+    --color-bg-card: #1a1a1a;
+    --color-accent-gold: #d4af37;
+    --color-accent-gold-light: #f4cf57;
+    --color-accent-purple: #8b5cf6;
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #a0a0a0;
+    --color-border: #2a2a2a;
+
+    /* Typography */
+    --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-display: 'Playfair Display', serif;
+
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 4rem;
+    --spacing-xl: 6rem;
+
+    /* Border Radius */
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+
+    /* Shadows */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+    --shadow-glow: 0 0 20px rgba(212, 175, 55, 0.3);
+
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+}
+
+/* ====================================
+   RESET & BASE STYLES
+   ==================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ====================================
+   NAVIGATION
+   ==================================== */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--color-border);
+    padding: var(--spacing-sm) var(--spacing-md);
+    transition: var(--transition-normal);
+}
+
+.navbar.scrolled {
+    box-shadow: var(--shadow-md);
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--color-accent-gold), var(--color-accent-gold-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 1px;
+}
+
+.nav-links {
+    display: flex;
+    gap: var(--spacing-md);
+    list-style: none;
+}
+
+.nav-links a {
+    color: var(--color-text-secondary);
+    font-weight: 500;
+    transition: var(--transition-fast);
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--color-accent-gold);
+    transition: var(--transition-normal);
+}
+
+.nav-links a:hover {
+    color: var(--color-text-primary);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* ====================================
+   HERO SECTION
+   ==================================== */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: var(--spacing-xl) var(--spacing-md);
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+    animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 0.8;
+    }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+}
+
+.hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 700;
+    margin-bottom: var(--spacing-sm);
+    background: linear-gradient(135deg, var(--color-accent-gold), var(--color-accent-gold-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: fadeInUp 1s ease;
+}
+
+.hero p {
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-md);
+    animation: fadeInUp 1s ease 0.2s backwards;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background: linear-gradient(135deg, var(--color-accent-gold), var(--color-accent-gold-light));
+    color: var(--color-bg-primary);
+    font-weight: 600;
+    font-size: 1.1rem;
+    border-radius: var(--radius-sm);
+    transition: var(--transition-normal);
+    box-shadow: var(--shadow-glow);
+    animation: fadeInUp 1s ease 0.4s backwards;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ====================================
+   PERFUMES SECTION
+   ==================================== */
+
+.perfumes {
+    padding: var(--spacing-xl) var(--spacing-md);
+    background: var(--color-bg-secondary);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.section-header h2 {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    margin-bottom: var(--spacing-sm);
+    background: linear-gradient(135deg, var(--color-accent-gold), var(--color-accent-gold-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.section-header p {
+    color: var(--color-text-secondary);
+    font-size: 1.2rem;
+}
+
+.perfume-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.perfume-card {
+    background: var(--color-bg-card);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    transition: var(--transition-normal);
+    cursor: pointer;
+}
+
+.perfume-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--color-accent-gold);
+    box-shadow: var(--shadow-lg), var(--shadow-glow);
+}
+
+.perfume-image {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    transition: var(--transition-slow);
+}
+
+.perfume-card:hover .perfume-image {
+    transform: scale(1.05);
+}
+
+.perfume-info {
+    padding: var(--spacing-md);
+}
+
+.perfume-name {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-text-primary);
+}
+
+.perfume-description {
+    color: var(--color-text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.5;
+}
+
+.perfume-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: var(--spacing-sm);
+    border-top: 1px solid var(--color-border);
+}
+
+.price {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--color-accent-gold);
+}
+
+.buy-button {
+    padding: 0.6rem 1.5rem;
+    background: linear-gradient(135deg, var(--color-accent-gold), var(--color-accent-gold-light));
+    color: var(--color-bg-primary);
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    border: none;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.buy-button:hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-glow);
+}
+
+/* ====================================
+   CONTACT SECTION
+   ==================================== */
+
+.contact {
+    padding: var(--spacing-lg) var(--spacing-md);
+    background: var(--color-bg-primary);
+}
+
+.contact-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-md);
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contact-card {
+    background: var(--color-bg-card);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+    text-align: center;
+    transition: var(--transition-normal);
+    display: block;
+}
+
+.contact-link {
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+}
+
+.contact-card:hover {
+    border-color: var(--color-accent-gold);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+.contact-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.contact-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-accent-gold);
+}
+
+.contact-card p {
+    color: var(--color-text-secondary);
+    font-size: 0.95rem;
+}
+
+.contact-card a {
+    color: var(--color-text-primary);
+    transition: var(--transition-fast);
+}
+
+.contact-card a:hover {
+    color: var(--color-accent-gold);
+}
+
+/* ====================================
+   FOOTER
+   ==================================== */
+
+.footer {
+    background: var(--color-bg-secondary);
+    padding: var(--spacing-md);
+    text-align: center;
+    border-top: 1px solid var(--color-border);
+}
+
+.footer p {
+    color: var(--color-text-secondary);
+    font-size: 0.95rem;
+}
+
+.footer-logo {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    background: linear-gradient(135deg, var(--color-accent-gold), var(--color-accent-gold-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: var(--spacing-xs);
+}
+
+/* ====================================
+   RESPONSIVE DESIGN
+   ==================================== */
+
+@media (max-width: 768px) {
+    .nav-links {
+        gap: var(--spacing-sm);
+    }
+
+    .nav-links a {
+        font-size: 0.9rem;
+    }
+
+    .hero {
+        padding: var(--spacing-lg) var(--spacing-sm);
+    }
+
+    .perfumes,
+    .contact {
+        padding: var(--spacing-lg) var(--spacing-sm);
+    }
+
+    .perfume-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+    }
+
+    .section-header {
+        margin-bottom: var(--spacing-md);
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 1.4rem;
+    }
+
+    .nav-links {
+        gap: var(--spacing-xs);
+    }
+
+    .nav-links a {
+        font-size: 0.8rem;
+    }
+
+    .perfume-image {
+        height: 250px;
+    }
+
+    .perfume-info {
+        padding: var(--spacing-sm);
+    }
+
+    .contact-info {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ====================================
+   UTILITY CLASSES
+   ==================================== */
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.mb-sm {
+    margin-bottom: var(--spacing-sm);
+}
+
+.mb-md {
+    margin-bottom: var(--spacing-md);
+}
+
+.mb-lg {
+    margin-bottom: var(--spacing-lg);
+}
