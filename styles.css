@@ -305,6 +305,11 @@ a {
     transition: var(--transition-slow);
 }
 
+.perfume-image-contain {
+    object-fit: contain;
+    background-color: var(--color-bg-card);
+}
+
 .perfume-card:hover .perfume-image {
     transform: scale(1.05);
 }
